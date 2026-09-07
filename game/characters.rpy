@@ -1,5 +1,9 @@
-define ar = Character('Aruna', color="#e74c3c")
-define aruna = Character('Aruna', color="#e74c3c")
+define ar = Character('Aruna', color="#3498db", callback=make_sprite_cb("aruna"))
+define aruna = Character('Aruna', color="#3498db", callback=make_sprite_cb("aruna"))
+define fa = Character('Fanya', color="#9b59b6", callback=make_sprite_cb("fanya"))
+define fanya = Character('Fanya', color="#9b59b6", callback=make_sprite_cb("fanya"))
+define fl = Character('Flourine', color="#e74c3c", callback=make_sprite_cb("flourine"))
+define flourine = Character('Flourine', color="#e74c3c", callback=make_sprite_cb("flourine"))
 define adam = Character('Adam', color="#2980b9")
 define ad = Character('Adam', color="#2980b9") # Alias
 define adi = Character('Adi', color="#34495e")

@@ -615,68 +615,92 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
         key "game_menu" action ShowMenu("main_menu")
 
 
-style game_menu_outer_frame is empty
-style game_menu_navigation_frame is empty
-style game_menu_content_frame is empty
-style game_menu_viewport is gui_viewport
-style game_menu_side is gui_side
-style game_menu_scrollbar is gui_vscrollbar
+## Style definitions - Cinematic Game Menu
 
-style game_menu_label is gui_label
-style game_menu_label_text is gui_label_text
+style game_menu_content_container is frame:
+    xalign 1.0
+    yalign 0.5
+    xoffset -120
+    xsize 1400
+    ysize 800
+    background None
 
-style return_button is navigation_button
-style return_button_text is navigation_button_text
+style game_menu_nav is vbox:
+    xpos 60
+    yalign 1.0
+    yoffset -50
+    spacing 4
 
-style return_button:
+style game_menu_nav_button is gui_button:
+    xsize 220
+    ysize 52
     background Solid("#18181b")  # Zinc-900
     hover_background Solid("#27272a")  # Zinc-800
+    selected_background Solid("#3f3f46")  # Zinc-700
     padding (24, 12, 24, 12)
-    xpos gui.navigation_xpos
-    yalign 1.0
-    yoffset -45
 
-style return_button_text:
+style game_menu_nav_button_text is gui_button_text:
+    font gui.interface_text_font
+    size 22
     color "#a1a1aa"  # Zinc-400
     hover_color "#fafafa"  # Zinc-50
+    selected_color "#ffffff"
+    insensitive_color "#52525b"  # Zinc-600
+    xalign 0.0
 
-style game_menu_outer_frame:
-    bottom_padding 45
-    top_padding 180
-
-    background "gui/overlay/game_menu.png"
-
-style game_menu_navigation_frame:
-    xsize 420
-    yfill True
-
-style game_menu_content_frame:
-    left_margin 60
-    right_margin 30
-    top_margin 15
-
-style game_menu_viewport:
-    xsize 1380
-
-style game_menu_vscrollbar:
-    unscrollable gui.unscrollable
-
-style game_menu_side:
-    spacing 15
-
-style game_menu_label:
-    xpos 75
-    ysize 180
-
-style game_menu_label_text:
-    size 75
-    color gui.accent_color
-    yalign 0.5
-
-style return_button:
-    xpos gui.navigation_xpos
+style game_menu_title_block is vbox:
+    xalign 1.0
     yalign 1.0
-    yoffset -45
+    xoffset -60
+    yoffset -50
+    xmaximum 800
+    spacing 6
+
+style game_menu_title is gui_text:
+    font gui.interface_text_font
+    size 72
+    color "#fafafa"  # Zinc-50
+    bold True
+    xalign 1.0
+    outlines [(2, "#00000066", 0, 0)]
+
+style game_menu_subtitle is gui_text:
+    font gui.interface_text_font
+    size 22
+    color "#71717a"  # Zinc-500
+    xalign 1.0
+
+style game_menu_version is gui_text:
+    font gui.interface_text_font
+    size 16
+    color "#52525b"  # Zinc-600
+    xalign 1.0
+
+style game_menu_page_title is gui_text:
+    font gui.interface_text_font
+    size 64
+    color "#fafafa"  # Zinc-50
+    bold True
+    xalign 0.0
+    yalign 0.0
+    outlines [(2, "#00000066", 0, 0)]
+
+style game_menu_return_button is gui_button:
+    xsize 220
+    ysize 52
+    background Solid("#27272a")  # Zinc-800
+    hover_background Solid("#3f3f46")  # Zinc-700
+    padding (24, 12, 24, 12)
+    xpos 60
+    yalign 1.0
+    yoffset -120
+
+style game_menu_return_button_text is gui_button_text:
+    font gui.interface_text_font
+    size 22
+    color "#a1a1aa"  # Zinc-400
+    hover_color "#fafafa"  # Zinc-50
+    xalign 0.0
 
 
 ## Layar About - Kampanye Custom ###############################################
@@ -689,49 +713,55 @@ screen about():
 
     use game_menu(_("Tentang"), scroll="viewport"):
 
-        style_prefix "about"
+        frame:
+            style "about_content_frame"
 
-        vbox:
-            spacing 20
+            vbox:
+                spacing 25
 
-            ## Judul game
-            text "[config.name!t]":
-                style "about_title"
+                ## Judul game
+                text "[config.name!t]":
+                    style "about_title"
 
-            ## Subtitle
-            text "Visual Novel - Pemilihan OSIS":
-                style "about_subtitle"
+                ## Subtitle
+                text "Visual Novel - Pemilihan OSIS":
+                    style "about_subtitle"
 
-            null height 10
+                null height 15
 
-            ## Deskripsi game
-            if gui.about:
-                text "[gui.about!t]":
-                    style "about_description"
+                ## Deskripsi game
+                if gui.about:
+                    text "[gui.about!t]":
+                        style "about_description"
 
-            null height 20
+                null height 25
 
-            ## Garis pemisah
-            add Solid("#27272a") xsize 600 ysize 1
+                ## Garis pemisah
+                add Solid("#27272a") xsize 800 ysize 1
 
-            null height 10
+                null height 15
 
-            ## Info teknis
-            text _("Versi [config.version!t]"):
-                style "about_info"
+                ## Info teknis
+                text _("Versi [config.version!t]"):
+                    style "about_info"
 
-            null height 5
+                null height 8
 
-            ## Kredit engine
-            text _("Dibuat dengan {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only]"):
-                style "about_engine"
+                ## Kredit engine
+                text _("Dibuat dengan {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only]"):
+                    style "about_engine"
 
-            null height 20
+                null height 25
 
-            ## Kredit tambahan
-            text "Kampanye - Visual Novel tentang politik sekolah dan pemilihan OSIS.":
-                style "about_credit"
+                ## Kredit tambahan
+                text "Kampanye - Visual Novel tentang politik sekolah dan pemilihan OSIS.":
+                    style "about_credit"
 
+
+style about_content_frame is frame:
+    background Solid("#18181b33")  # Zinc-900 dengan transparansi
+    padding (40, 35, 40, 35)
+    xsize 1300
 
 style about_label is gui_label
 style about_label_text is gui_label_text
@@ -739,37 +769,38 @@ style about_text is gui_text
 
 style about_title:
     font gui.interface_text_font
-    size 48
+    size 56
     color "#fafafa"
     bold True
+    outlines [(2, "#00000066", 0, 0)]
 
 style about_subtitle:
     font gui.interface_text_font
-    size 22
+    size 26
     color "#71717a"
 
 style about_description:
     font gui.interface_text_font
     size 24
-    color "#a1a1aa"
-    line_spacing 12
-    xmaximum 800
+    color "#d4d4d8"  # Zinc-300
+    line_spacing 8
+    xmaximum 1200
 
 style about_info:
     font gui.interface_text_font
-    size 18
-    color "#52525b"
+    size 20
+    color "#a1a1aa"  # Zinc-400
 
 style about_engine:
     font gui.interface_text_font
-    size 18
-    color "#52525b"
+    size 20
+    color "#a1a1aa"  # Zinc-400
 
 style about_credit:
     font gui.interface_text_font
-    size 18
-    color "#52525b"
-    xmaximum 800
+    size 20
+    color "#a1a1aa"  # Zinc-400
+    xmaximum 1200
 
 
 ## Layar Load and Save #########################################################
@@ -941,80 +972,103 @@ screen preferences():
     use game_menu(_("Setting"), scroll="viewport"):
 
         vbox:
+            spacing 30
 
-            hbox:
-                box_wrap True
-
-                if renpy.variant("pc") or renpy.variant("web"):
-
-                    vbox:
-                        style_prefix "radio"
-                        label _("Tampilan")
-                        textbutton _("Jendela") action Preference("display", "window")
-                        textbutton _("Layar Penuh") action Preference("display", "fullscreen")
+            ## Section 1: Display & Skip Settings
+            frame:
+                style "pref_section_frame"
 
                 vbox:
-                    style_prefix "check"
-                    label _("Lompati")
-                    textbutton _("Belum Terlihat") action Preference("skip", "toggle")
-                    textbutton _("Setelah Pilihan") action Preference("after choices", "toggle")
-                    textbutton _("Transisi") action InvertSelected(Preference("transitions", "toggle"))
+                    spacing 20
 
-                ## Tipe tambahan vboxes "radio_pref" atau "check_pref" dapat di
-                ## tambahkan disini, untuk menambahkan tambahan preferensi yang
-                ## dibuat creator.
+                    text _("Tampilan & Gameplay"):
+                        style "pref_section_title"
 
-            null height (4 * gui.pref_spacing)
+                    hbox:
+                        box_wrap True
+                        spacing 40
 
-            hbox:
-                style_prefix "slider"
-                box_wrap True
+                        if renpy.variant("pc") or renpy.variant("web"):
+                            vbox:
+                                style_prefix "radio"
+                                spacing 12
+                                label _("Tampilan")
+                                textbutton _("Jendela") action Preference("display", "window")
+                                textbutton _("Layar Penuh") action Preference("display", "fullscreen")
+
+                        vbox:
+                            style_prefix "check"
+                            spacing 12
+                            label _("Lompati")
+                            textbutton _("Belum Terlihat") action Preference("skip", "toggle")
+                            textbutton _("Setelah Pilihan") action Preference("after choices", "toggle")
+                            textbutton _("Transisi") action InvertSelected(Preference("transitions", "toggle"))
+
+            ## Section 2: Text & Audio Settings
+            frame:
+                style "pref_section_frame"
 
                 vbox:
+                    spacing 20
 
-                    label _("Kecepatan Text")
+                    text _("Kecepatan & Audio"):
+                        style "pref_section_title"
 
-                    bar value Preference("text speed")
+                    hbox:
+                        box_wrap True
+                        spacing 40
 
-                    label _("Waktu Otomatis-Maju")
+                        vbox:
+                            spacing 20
 
-                    bar value Preference("auto-forward time")
+                            label _("Kecepatan Text")
+                            bar value Preference("text speed") style "pref_slider"
 
-                vbox:
+                            label _("Waktu Otomatis-Maju")
+                            bar value Preference("auto-forward time") style "pref_slider"
 
-                    if config.has_music:
-                        label _("Volume Musik")
+                        vbox:
+                            spacing 20
 
-                        hbox:
-                            bar value Preference("music volume")
+                            if config.has_music:
+                                label _("Volume Musik")
+                                bar value Preference("music volume") style "pref_slider"
 
-                    if config.has_sound:
+                            if config.has_sound:
+                                label _("Volume Suara")
+                                hbox:
+                                    bar value Preference("sound volume") style "pref_slider"
+                                    if config.sample_sound:
+                                        textbutton _("Tes") action Play("sound", config.sample_sound) style "pref_test_button"
 
-                        label _("Volume Suara")
+                            if config.has_voice:
+                                label _("Volume Vokal")
+                                hbox:
+                                    bar value Preference("voice volume") style "pref_slider"
+                                    if config.sample_voice:
+                                        textbutton _("Tes") action Play("voice", config.sample_voice) style "pref_test_button"
 
-                        hbox:
-                            bar value Preference("sound volume")
+                            if config.has_music or config.has_sound or config.has_voice:
+                                null height 20
+                                textbutton _("Senyapkan Semua"):
+                                    action Preference("all mute", "toggle")
+                                    style "pref_mute_button"
 
-                            if config.sample_sound:
-                                textbutton _("Tes") action Play("sound", config.sample_sound)
 
+## Style definitions - Cinematic Preferences
 
-                    if config.has_voice:
-                        label _("Volume Vokal")
+style pref_section_frame is frame:
+    background Solid("#18181b33")  # Zinc-900 dengan transparansi
+    padding (30, 25, 30, 25)
+    xsize 1300
 
-                        hbox:
-                            bar value Preference("voice volume")
-
-                            if config.sample_voice:
-                                textbutton _("Tes") action Play("voice", config.sample_voice)
-
-                    if config.has_music or config.has_sound or config.has_voice:
-                        null height gui.pref_spacing
-
-                        textbutton _("Senyapkan Semua"):
-                            action Preference("all mute", "toggle")
-                            style "mute_all_button"
-
+style pref_section_title is gui_text:
+    font gui.interface_text_font
+    size 32
+    color "#fafafa"  # Zinc-50
+    bold True
+    xalign 0.0
+    bottom_margin 15
 
 style pref_label is gui_label
 style pref_label_text is gui_label_text
@@ -1032,58 +1086,95 @@ style check_button is gui_button
 style check_button_text is gui_button_text
 style check_vbox is pref_vbox
 
-style slider_label is pref_label
-style slider_label_text is pref_label_text
-style slider_slider is gui_slider
-style slider_button is gui_button
-style slider_button_text is gui_button_text
-style slider_pref_vbox is pref_vbox
-
-style mute_all_button is check_button
-style mute_all_button_text is check_button_text
+style pref_slider is gui_slider
+style pref_test_button is gui_button
+style pref_test_button_text is gui_button_text
+style pref_mute_button is gui_button
+style pref_mute_button_text is gui_button_text
 
 style pref_label:
-    top_margin gui.pref_spacing
-    bottom_margin 3
+    top_margin 10
+    bottom_margin 8
 
 style pref_label_text:
     yalign 1.0
     color "#d4d4d8"  # Zinc-300
-    size 24
+    size 22
 
 style pref_vbox:
-    xsize 338
+    xsize 400
 
 style radio_vbox:
-    spacing gui.pref_button_spacing
+    spacing 8
 
 style radio_button:
     properties gui.button_properties("radio_button")
     foreground "gui/button/radio_[prefix_]foreground.png"
-    background Solid("#18181b")  # Zinc-900
-    hover_background Solid("#27272a")  # Zinc-800
-    padding (20, 8, 20, 8)
+    background Solid("#27272a")  # Zinc-800
+    hover_background Solid("#3f3f46")  # Zinc-700
+    selected_background Solid("#52525b")  # Zinc-600
+    padding (18, 10, 18, 10)
+    xsize 380
 
 style radio_button_text:
     properties gui.text_properties("radio_button")
     color "#a1a1aa"  # Zinc-400
     hover_color "#fafafa"  # Zinc-50
     selected_color "#ffffff"
+    size 20
 
 style check_vbox:
-    spacing gui.pref_button_spacing
+    spacing 8
 
 style check_button:
     properties gui.button_properties("check_button")
     foreground "gui/button/check_[prefix_]foreground.png"
-    background Solid("#18181b")  # Zinc-900
-    hover_background Solid("#27272a")  # Zinc-800
-    padding (20, 8, 20, 8)
+    background Solid("#27272a")  # Zinc-800
+    hover_background Solid("#3f3f46")  # Zinc-700
+    selected_background Solid("#52525b")  # Zinc-600
+    padding (18, 10, 18, 10)
+    xsize 380
 
 style check_button_text:
     properties gui.text_properties("check_button")
     color "#a1a1aa"  # Zinc-400
     hover_color "#fafafa"  # Zinc-50
+    selected_color "#ffffff"
+    size 20
+
+style pref_slider:
+    ysize 40
+    xsize 350
+    base_bar Solid("#27272a")  # Zinc-800
+    hover_base_bar Solid("#3f3f46")  # Zinc-700
+    thumb Solid("#0099cc")  # Accent color
+    hover_thumb Solid("#66c1e0")  # Hover accent
+
+style pref_test_button:
+    background Solid("#0099cc")  # Accent color
+    hover_background Solid("#66c1e0")  # Hover accent
+    padding (15, 8, 15, 8)
+    xsize 80
+    ysize 35
+
+style pref_test_button_text:
+    color "#000000"
+    hover_color "#000000"
+    size 18
+    bold True
+
+style pref_mute_button:
+    background Solid("#ef4444")  # Red-500
+    hover_background Solid("#f87171")  # Red-400
+    padding (20, 12, 20, 12)
+    xsize 200
+    ysize 45
+
+style pref_mute_button_text:
+    color "#ffffff"
+    hover_color "#ffffff"
+    size 20
+    bold True
     selected_color "#ffffff"
 
 style slider_slider:

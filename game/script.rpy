@@ -1,8 +1,4 @@
-# Characters
-define ar = Character('Aruna', color="#3498db")
-define fl = Character('Flourine', color="#e74c3c")
-define fa = Character('Fanya', color="#9b59b6")
-define ad = Character('Adam', color="#2ecc71")
+# Characters defined in characters.rpy
 
 # Global Variables
 default current_day = 1
