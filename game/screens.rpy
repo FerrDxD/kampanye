@@ -485,70 +485,131 @@ style main_menu_version is gui_text:
 
 screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
 
-    style_prefix "game_menu"
+    tag menu
 
+    ## Background full-screen
     if main_menu:
         add gui.main_menu_background
     else:
         add gui.game_menu_background
 
+    ## Gradient overlay - gelap keseluruhan untuk kedalaman cinematic
+    add Solid("#00000099")
+
+    ## Gelapkan bagian bawah untuk depth
+    add Solid("#000000aa")
+
+    ## Content area - tengah kanan
     frame:
-        style "game_menu_outer_frame"
+        style "game_menu_content_container"
 
-        hbox:
+        if scroll == "viewport":
 
-            ## Memesan tempat untuk bagian navigasi.
-            frame:
-                style "game_menu_navigation_frame"
+            viewport:
+                yinitial yinitial
+                scrollbars "vertical"
+                mousewheel True
+                draggable True
+                pagekeys True
 
-            frame:
-                style "game_menu_content_frame"
+                side_yfill True
 
-                if scroll == "viewport":
-
-                    viewport:
-                        yinitial yinitial
-                        scrollbars "vertical"
-                        mousewheel True
-                        draggable True
-                        pagekeys True
-
-                        side_yfill True
-
-                        vbox:
-                            spacing spacing
-
-                            transclude
-
-                elif scroll == "vpgrid":
-
-                    vpgrid:
-                        cols 1
-                        yinitial yinitial
-
-                        scrollbars "vertical"
-                        mousewheel True
-                        draggable True
-                        pagekeys True
-
-                        side_yfill True
-
-                        spacing spacing
-
-                        transclude
-
-                else:
-
+                vbox:
+                    spacing spacing
                     transclude
 
-    use navigation
+        elif scroll == "vpgrid":
 
-    textbutton _("Kembali"):
-        style "return_button"
+            vpgrid:
+                cols 1
+                yinitial yinitial
 
-        action Return()
+                scrollbars "vertical"
+                mousewheel True
+                draggable True
+                pagekeys True
 
-    label title
+                side_yfill True
+
+                spacing spacing
+
+                transclude
+
+        else:
+
+            transclude
+
+    ## Navigasi - kiri bawah, layout vertikal
+    vbox:
+        style "game_menu_nav"
+
+        if main_menu:
+            textbutton _("Mulai"):
+                action Start()
+                style "game_menu_nav_button"
+        else:
+            textbutton _("Riwayat"):
+                action ShowMenu("history")
+                style "game_menu_nav_button"
+
+            textbutton _("Simpan"):
+                action ShowMenu("save")
+                style "game_menu_nav_button"
+
+        textbutton _("Muat"):
+            action ShowMenu("load")
+            style "game_menu_nav_button"
+
+        textbutton _("Setting"):
+            action ShowMenu("preferences")
+            style "game_menu_nav_button"
+
+        if _in_replay:
+            textbutton _("Akhiri Replay"):
+                action EndReplay(confirm=True)
+                style "game_menu_nav_button"
+        elif not main_menu:
+            textbutton _("Menu Utama"):
+                action MainMenu()
+                style "game_menu_nav_button"
+
+        textbutton _("Tentang"):
+            action ShowMenu("about")
+            style "game_menu_nav_button"
+
+        if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
+            textbutton _("Bantuan"):
+                action ShowMenu("help")
+                style "game_menu_nav_button"
+
+        if renpy.variant("pc"):
+            textbutton _("Keluar"):
+                action Quit(confirm=not main_menu)
+                style "game_menu_nav_button"
+
+    ## Title block - kanan atas
+    if main_menu:
+        vbox:
+            style "game_menu_title_block"
+
+            text "[config.name!t]":
+                style "game_menu_title"
+
+            text "Visual Novel":
+                style "game_menu_subtitle"
+
+            text "[config.version]":
+                style "game_menu_version"
+    else:
+        ## Title untuk game menu (preferences, dll)
+        text title:
+            style "game_menu_page_title"
+
+    ## Tombol kembali - hanya untuk game menu (bukan main menu)
+    if not main_menu:
+        textbutton _("Kembali"):
+            style "game_menu_return_button"
+            action Return()
 
     if main_menu:
         key "game_menu" action ShowMenu("main_menu")
