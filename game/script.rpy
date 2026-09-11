@@ -352,16 +352,16 @@ label robotika_heist:
         "Kembali dulu. Ini terlalu mencurigakan.":
             "Aruna memutuskan untuk mundur. Malam ini ada sesuatu yang salah."
             "Tapi saat membalikkan badan, sebuah tangan menepuk bahunya dari belakang."
-            "Juan—anggota ekskul Robotika—berdiri di sana dengan mata merah karena kurang tidur."
+            "Juan berdiri di sana dengan mata merah karena kurang tidur."
             juan "Lo beneran bakal ke lantai dua malam ini, Aruna?"
             juan "Gue udah nunggu dari jam sembilan. Gue bisa bantu lo, tapi ada kondisinya."
             jump heist_juan_encounter
 
-        "Cari Ferdi—ketua Robotika—di area belakang lab.":
+        "Cari Ferdi di area belakang lab.":
             "Aruna ingat Ferdi sering berada di area belakang lab Robotika bahkan malam-malam."
             "Berjalan menuju area itu dengan hati-hati."
             "Di balik gudang Robotika, Aruna melihat siluet seseorang sedang duduk di bangku kayu tua."
-            "Ferdi—ketua ekskul Robotika—sedang memegang kepala dengan kedua tangannya."
+            "Ferdi sedang memegang kepala dengan kedua tangannya."
             jump heist_ferdi_encounter
 
 label heist_choice_1:
