@@ -147,16 +147,16 @@ label loc_lapangan:
     menu (screen="npc_choice"):
         "Siapa yang ingin kamu temui di Lapangan?"
         
-        "Anggun (Anggota Karate)" if npc_state["anggun"]["quest_status"] in ["not_started", "in_progress"] and (player_path == None or player_path == "support"):
+        "Anggun (Anggota Karate)" if npc_state["anggun"]["quest_status"] in ["not_started", "in_progress"] and (player_path != "rival"):
             jump quest_anggun
             
-        "Lulu (Ketua Karate)" if npc_state["lulu"]["quest_status"] in ["not_started", "in_progress"] and (player_path == None or player_path == "support"):
+        "Lulu (Ketua Karate)" if npc_state["lulu"]["quest_status"] in ["not_started", "in_progress"] and (player_path != "rival"):
             jump quest_lulu
             
-        "Cecillia (Ketua Badminton)" if npc_state["cecillia"]["quest_status"] in ["not_started", "in_progress"] and (player_path == None or player_path == "support"):
+        "Cecillia (Ketua Badminton)" if npc_state["cecillia"]["quest_status"] in ["not_started", "in_progress"] and (player_path != "rival"):
             jump quest_cecillia
             
-        "Aulia (Ketua Paskibra)" if npc_state["aulia"]["quest_status"] in ["not_started", "in_progress"] and (player_path == None or player_path == "support"):
+        "Aulia (Ketua Paskibra)" if npc_state["aulia"]["quest_status"] in ["not_started", "in_progress"] and (player_path != "rival"):
             jump quest_aulia
 
         "Kembali ke Peta":
@@ -169,22 +169,22 @@ label loc_ekskul:
     menu (screen="npc_choice"):
         "Siapa yang ingin kamu temui di Ruang Ekskul?"
 
-        "Adam (Ketua Jurnalistik)" if npc_state["adam"]["quest_status"] in ["not_started", "in_progress"] and (player_path == None or player_path == "support"):
+        "Adam (Ketua Jurnalistik)" if npc_state["adam"]["quest_status"] in ["not_started", "in_progress"] and (player_path != "rival"):
             jump quest_adam
             
-        "Adi (Anggota Jurnalistik)" if npc_state["adi"]["quest_status"] in ["not_started", "in_progress"] and (player_path == None or player_path == "support"):
+        "Adi (Anggota Jurnalistik)" if npc_state["adi"]["quest_status"] in ["not_started", "in_progress"] and (player_path != "rival"):
             jump quest_adi
 
-        "Yura (Anggota Jurnalistik)" if npc_state["yura"]["quest_status"] in ["not_started", "in_progress"] and (player_path == None or player_path == "support"):
+        "Yura (Anggota Jurnalistik)" if npc_state["yura"]["quest_status"] in ["not_started", "in_progress"] and (player_path != "rival"):
             jump quest_yura
 
-        "Ami (Anggota Jurnalistik)" if npc_state["ami"]["quest_status"] in ["not_started", "in_progress"] and (player_path == None or player_path == "support"):
+        "Ami (Anggota Jurnalistik)" if npc_state["ami"]["quest_status"] in ["not_started", "in_progress"] and (player_path != "rival"):
             jump quest_ami
 
-        "Inez (Anggota Seni)" if npc_state["inez"]["quest_status"] in ["not_started", "in_progress"] and (player_path == None or player_path == "support"):
+        "Inez (Anggota Seni)" if npc_state["inez"]["quest_status"] in ["not_started", "in_progress"] and (player_path != "rival"):
             jump quest_inez
 
-        "Nayra (Ketua Akustik)" if npc_state["nayra"]["quest_status"] in ["not_started", "in_progress"] and (player_path == None or player_path == "support"):
+        "Nayra (Ketua Akustik)" if npc_state["nayra"]["quest_status"] in ["not_started", "in_progress"] and (player_path != "rival"):
             jump quest_nayra
 
         "Kembali ke Peta":
@@ -197,16 +197,16 @@ label loc_lab:
     menu (screen="npc_choice"):
         "Siapa yang ingin kamu temui di Laboratorium?"
 
-        "Ferdi (Ketua Robotika)" if npc_state["ferdi"]["quest_status"] in ["not_started", "in_progress"] and (player_path == None or player_path == "support"):
+        "Ferdi (Ketua Robotika)" if npc_state["ferdi"]["quest_status"] in ["not_started", "in_progress"] and (player_path != "rival"):
             jump quest_ferdi
 
-        "Juan (Anggota Robotika)" if npc_state["juan"]["quest_status"] in ["not_started", "in_progress"] and (player_path == None or player_path == "support"):
+        "Juan (Anggota Robotika)" if npc_state["juan"]["quest_status"] in ["not_started", "in_progress"] and (player_path != "rival"):
             jump quest_juan
 
-        "Faizal (Anggota Robotika)" if npc_state["faizal"]["quest_status"] in ["not_started", "in_progress"] and (player_path == None or player_path == "support"):
+        "Faizal (Anggota Robotika)" if npc_state["faizal"]["quest_status"] in ["not_started", "in_progress"] and (player_path != "rival"):
             jump quest_faizal
 
-        "Lukman (Ketua Zoologi)" if npc_state["lukman"]["quest_status"] in ["not_started", "in_progress"] and (player_path == None or player_path == "support"):
+        "Lukman (Ketua Zoologi)" if npc_state["lukman"]["quest_status"] in ["not_started", "in_progress"] and (player_path != "rival"):
             jump quest_lukman
 
         "Kembali ke Peta":
@@ -219,10 +219,10 @@ label loc_perpus:
     menu (screen="npc_choice"):
         "Siapa yang ingin kamu temui di Perpustakaan?"
 
-        "Ellisa (Anggota Math Club)" if npc_state["ellisa"]["quest_status"] in ["not_started", "in_progress"] and (player_path == None or player_path == "support"):
+        "Ellisa (Anggota Math Club)" if npc_state["ellisa"]["quest_status"] in ["not_started", "in_progress"] and (player_path != "rival"):
             jump quest_ellisa
 
-        "Bagus (Pustakawan)" if npc_state["bagus"]["quest_status"] in ["not_started", "in_progress"] and (player_path == None or player_path == "support"):
+        "Bagus (Pustakawan)" if npc_state["bagus"]["quest_status"] in ["not_started", "in_progress"] and (player_path != "rival"):
             jump quest_bagus
 
         "Kembali ke Peta":
@@ -235,10 +235,10 @@ label loc_osis:
     menu (screen="npc_choice"):
         "Siapa yang ingin kamu temui di Ruang OSIS?"
         
-        "Fanya (Kandidat OSIS)" if player_path == None or player_path == "rival":
+        "Fanya (Kandidat OSIS)" if player_path != "support":
             jump rival_fanya_loop
             
-        "Flourine (Ketua OSIS Petahana)" if player_path == None or player_path == "rival":
+        "Flourine (Ketua OSIS Petahana)" if player_path != "support":
             jump rival_flourine_loop
 
         "Kembali ke Peta":
@@ -251,7 +251,7 @@ label loc_uks:
     menu (screen="npc_choice"):
         "Siapa yang ingin kamu temui di UKS?"
 
-        "Desti (Ketua PMR)" if npc_state["desti"]["quest_status"] in ["not_started", "in_progress"] and (player_path == None or player_path == "support"):
+        "Desti (Ketua PMR)" if npc_state["desti"]["quest_status"] in ["not_started", "in_progress"] and (player_path != "rival"):
             jump quest_desti
 
         "Kembali ke Peta":
@@ -264,7 +264,7 @@ label loc_aula:
     menu (screen="npc_choice"):
         "Siapa yang ingin kamu temui di Aula?"
 
-        "Ayya (Ketua FPSH)" if npc_state["ayya"]["quest_status"] in ["not_started", "in_progress"] and (player_path == None or player_path == "support"):
+        "Ayya (Ketua FPSH)" if npc_state["ayya"]["quest_status"] in ["not_started", "in_progress"] and (player_path != "rival"):
             jump quest_ayya
 
         "Kembali ke Peta":
@@ -277,7 +277,7 @@ label loc_pramuka:
     menu (screen="npc_choice"):
         "Siapa yang ingin kamu temui di Markas Pramuka?"
 
-        "Angga (Dewan Ambalan)" if npc_state["angga"]["quest_status"] in ["not_started", "in_progress"] and (player_path == None or player_path == "support"):
+        "Angga (Dewan Ambalan)" if npc_state["angga"]["quest_status"] in ["not_started", "in_progress"] and (player_path != "rival"):
             jump quest_angga
 
         "Kembali ke Peta":
