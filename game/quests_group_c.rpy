@@ -138,10 +138,7 @@ label lukman_nolak:
 
 label lukman_end:
     "Obrolan kalian pun berakhir setelah menyepakati langkah selanjutnya."
-    $ npc_state["lukman"]["relationship_quality"] += lukman_meter
-    $ npc_state["lukman"]["quest_status"] = "completed"
-    $ npc_state["lukman"]["votes_banked"] = get_votes_from_relationship(npc_state["lukman"]["relationship_quality"])
-    $ total_votes = calc_total_votes()
+    $ complete_quest("lukman", lukman_meter)
     "Quest Lukman selesai. Kamu mendapatkan [npc_state['lukman']['votes_banked']] vote."
     jump end_day_routine
 
@@ -277,10 +274,7 @@ label bagus_tolak:
 
 label bagus_end:
     "Kamu dan Bagus menghabiskan sisa sore itu mendiskusikan sejarah organisasi di sekolah."
-    $ npc_state["bagus"]["relationship_quality"] += bagus_meter
-    $ npc_state["bagus"]["quest_status"] = "completed"
-    $ npc_state["bagus"]["votes_banked"] = get_votes_from_relationship(npc_state["bagus"]["relationship_quality"])
-    $ total_votes = calc_total_votes()
+    $ complete_quest("bagus", bagus_meter)
     "Quest Bagus selesai. Kamu mendapatkan [npc_state['bagus']['votes_banked']] vote."
     jump end_day_routine
 
@@ -410,10 +404,7 @@ label yura_aman:
 
 label yura_end:
     "Yura menutup bukunya dan mengangguk pelan padamu."
-    $ npc_state["yura"]["relationship_quality"] += yura_meter
-    $ npc_state["yura"]["quest_status"] = "completed"
-    $ npc_state["yura"]["votes_banked"] = get_votes_from_relationship(npc_state["yura"]["relationship_quality"])
-    $ total_votes = calc_total_votes()
+    $ complete_quest("yura", yura_meter)
     "Quest Yura selesai. Kamu mendapatkan [npc_state['yura']['votes_banked']] vote."
     jump end_day_routine
 
@@ -543,10 +534,7 @@ label ayya_tolak:
 
 label ayya_end:
     "Ayya kembali menatap kertas-kertasnya, kali ini dengan ekspresi yang berbeda."
-    $ npc_state["ayya"]["relationship_quality"] += ayya_meter
-    $ npc_state["ayya"]["quest_status"] = "completed"
-    $ npc_state["ayya"]["votes_banked"] = get_votes_from_relationship(npc_state["ayya"]["relationship_quality"])
-    $ total_votes = calc_total_votes()
+    $ complete_quest("ayya", ayya_meter)
     "Quest Ayya selesai. Kamu mendapatkan [npc_state['ayya']['votes_banked']] vote."
     jump end_day_routine
 
@@ -678,10 +666,7 @@ label ami_tolak:
 
 label ami_end:
     "Ami tersenyum hangat setelah mencatat beberapa kalimat darimu."
-    $ npc_state["ami"]["relationship_quality"] += ami_meter
-    $ npc_state["ami"]["quest_status"] = "completed"
-    $ npc_state["ami"]["votes_banked"] = get_votes_from_relationship(npc_state["ami"]["relationship_quality"])
-    $ total_votes = calc_total_votes()
+    $ complete_quest("ami", ami_meter)
     "Quest Ami selesai. Kamu mendapatkan [npc_state['ami']['votes_banked']] vote."
     jump end_day_routine
 
@@ -810,9 +795,6 @@ label cecillia_tolak:
 
 label cecillia_end:
     "Kamu dan Cecillia saling melempar senyum sebelum kamu pamit meninggalkan GOR."
-    $ npc_state["cecillia"]["relationship_quality"] += cecillia_meter
-    $ npc_state["cecillia"]["quest_status"] = "completed"
-    $ npc_state["cecillia"]["votes_banked"] = get_votes_from_relationship(npc_state["cecillia"]["relationship_quality"])
-    $ total_votes = calc_total_votes()
+    $ complete_quest("cecillia", cecillia_meter)
     "Quest Cecillia selesai. Kamu mendapatkan [npc_state['cecillia']['votes_banked']] vote."
     jump end_day_routine

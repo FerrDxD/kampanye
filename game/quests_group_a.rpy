@@ -96,10 +96,7 @@ label adi_ending:
     adi "Sip, obrolan yang mencerahkan. Makasih waktunya, Aruna."
     ar "Sama-sama, Di. Semangat nulisnya."
     
-    $ npc_state["adi"]["relationship_quality"] += adi_meter
-    $ npc_state["adi"]["quest_status"] = "completed"
-    $ npc_state["adi"]["votes_banked"] = get_votes_from_relationship(npc_state["adi"]["relationship_quality"])
-    $ total_votes = calc_total_votes()
+    $ complete_quest("adi", adi_meter)
     
     "Quest Adi selesai. Akumulasi meter: [adi_meter]. Kamu mendapatkan [npc_state['adi']['votes_banked']] vote."
     jump end_day_routine
@@ -163,10 +160,7 @@ label anggun_ending:
         ang "Gue balik duluan ya. Masih mau pendinginan."
         ar "Oke, istirahat yang cukup, Nggun."
         
-    $ npc_state["anggun"]["relationship_quality"] += anggun_meter
-    $ npc_state["anggun"]["quest_status"] = "completed"
-    $ npc_state["anggun"]["votes_banked"] = get_votes_from_relationship(npc_state["anggun"]["relationship_quality"])
-    $ total_votes = calc_total_votes()
+    $ complete_quest("anggun", anggun_meter)
     
     "Quest Anggun selesai. Akumulasi meter: [anggun_meter]. Kamu mendapatkan [npc_state['anggun']['votes_banked']] vote."
     jump end_day_routine
@@ -242,10 +236,7 @@ label lulu_ending:
     lul "Makasih udah dengerin curhatan gue, Run. Ini ngurangin beban pikiran gue."
     ar "Sama-sama, Lu. Semoga masalahnya cepet kelar."
     
-    $ npc_state["lulu"]["relationship_quality"] += lulu_meter
-    $ npc_state["lulu"]["quest_status"] = "completed"
-    $ npc_state["lulu"]["votes_banked"] = get_votes_from_relationship(npc_state["lulu"]["relationship_quality"])
-    $ total_votes = calc_total_votes()
+    $ complete_quest("lulu", lulu_meter)
     
     "Quest Lulu selesai. Akumulasi meter: [lulu_meter]. Kamu mendapatkan [npc_state['lulu']['votes_banked']] vote."
     jump end_day_routine
@@ -325,10 +316,7 @@ label inez_ending:
     inz "Gue lanjut coret-coret dulu ya. Thanks udah mampir, Run."
     ar "Sama-sama. Semangat terus, Nez."
     
-    $ npc_state["inez"]["relationship_quality"] += inez_meter
-    $ npc_state["inez"]["quest_status"] = "completed"
-    $ npc_state["inez"]["votes_banked"] = get_votes_from_relationship(npc_state["inez"]["relationship_quality"])
-    $ total_votes = calc_total_votes()
+    $ complete_quest("inez", inez_meter)
     
     "Quest Inez selesai. Akumulasi meter: [inez_meter]. Kamu mendapatkan [npc_state['inez']['votes_banked']] vote."
     jump end_day_routine
@@ -389,10 +377,7 @@ label angga_ending:
         aga "Gue harus lanjut kerja nih. Sukses ya kampanyenya."
     ar "Sip, duluan ya Ngga."
     
-    $ npc_state["angga"]["relationship_quality"] += angga_meter
-    $ npc_state["angga"]["quest_status"] = "completed"
-    $ npc_state["angga"]["votes_banked"] = get_votes_from_relationship(npc_state["angga"]["relationship_quality"])
-    $ total_votes = calc_total_votes()
+    $ complete_quest("angga", angga_meter)
     
     "Quest Angga selesai. Akumulasi meter: [angga_meter]. Kamu mendapatkan [npc_state['angga']['votes_banked']] vote."
     jump end_day_routine
@@ -461,20 +446,11 @@ label ferdi_ending:
     fer "Makasih udah mampir dan ngobrol, Run. Kita mau lanjut debugging dulu."
     ar "Semangat ya! Semoga robotnya cepet beres."
     
-    $ npc_state["ferdi"]["relationship_quality"] += ferdi_meter
-    $ npc_state["juan"]["relationship_quality"] += ferdi_meter
-    $ npc_state["faizal"]["relationship_quality"] += ferdi_meter
-    
-    $ npc_state["ferdi"]["quest_status"] = "completed"
-    $ npc_state["juan"]["quest_status"] = "completed"
-    $ npc_state["faizal"]["quest_status"] = "completed"
-    
-    $ npc_state["ferdi"]["votes_banked"] = get_votes_from_relationship(npc_state["ferdi"]["relationship_quality"])
-    $ npc_state["juan"]["votes_banked"] = get_votes_from_relationship(npc_state["juan"]["relationship_quality"])
-    $ npc_state["faizal"]["votes_banked"] = get_votes_from_relationship(npc_state["faizal"]["relationship_quality"])
+    $ complete_quest("ferdi", ferdi_meter)
+    $ complete_quest("juan", ferdi_meter)
+    $ complete_quest("faizal", ferdi_meter)
     
     $ robotika_unique_quest_status = "available"
-    $ total_votes = calc_total_votes()
     
     "Quest Ferdi selesai. Akumulasi meter: [ferdi_meter]."
     "Efek berantai: Juan dan Faizal ikut terpengaruh oleh keputusanmu."

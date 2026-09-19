@@ -44,63 +44,63 @@ screen school_map():
 
     # Floating location buttons
     textbutton "Gerbang Depan":
-        action Return("gerbang")
+        action Return("loc_gerbang")
         text_size 25 text_color "#ffffff" text_bold True text_align 0.5
         background Solid("#2c3e50cc")
         padding (15, 10)
         xpos 100 ypos 800
 
     textbutton "Lapangan Olahraga":
-        action Return("lapangan")
+        action Return("loc_lapangan")
         text_size 25 text_color "#ffffff" text_bold True text_align 0.5
         background Solid("#27ae60cc")
         padding (15, 10)
         xpos 350 ypos 300
 
     textbutton "Laboratorium":
-        action Return("lab")
+        action Return("loc_lab")
         text_size 25 text_color "#ffffff" text_bold True text_align 0.5
         background Solid("#2980b9cc")
         padding (15, 10)
         xpos 1400 ypos 550
 
     textbutton "Perpustakaan":
-        action Return("perpus")
+        action Return("loc_perpus")
         text_size 25 text_color "#ffffff" text_bold True text_align 0.5
         background Solid("#d35400cc")
         padding (15, 10)
         xpos 1500 ypos 300
 
     textbutton "Ruang OSIS":
-        action Return("osis")
+        action Return("loc_osis")
         text_size 25 text_color "#ffffff" text_bold True text_align 0.5
         background Solid("#c0392bcc")
         padding (15, 10)
         xpos 900 ypos 300
 
     textbutton "Koridor Ekskul":
-        action Return("ekskul")
+        action Return("loc_ekskul")
         text_size 25 text_color "#ffffff" text_bold True text_align 0.5
         background Solid("#8e44adcc")
         padding (15, 10)
         xpos 250 ypos 600
 
     textbutton "Aula Utama":
-        action Return("aula")
+        action Return("loc_aula")
         text_size 25 text_color "#ffffff" text_bold True text_align 0.5
         background Solid("#f39c12cc")
         padding (15, 10)
         xpos 100 ypos 350
 
     textbutton "UKS":
-        action Return("uks")
+        action Return("loc_uks")
         text_size 25 text_color "#ffffff" text_bold True text_align 0.5
         background Solid("#16a085cc")
         padding (15, 10)
         xpos 800 ypos 550
 
     textbutton "Markas Pramuka":
-        action Return("pramuka")
+        action Return("loc_pramuka")
         text_size 25 text_color "#ffffff" text_bold True text_align 0.5
         background Solid("#7f8c8dcc")
         padding (15, 10)

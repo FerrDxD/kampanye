@@ -86,10 +86,7 @@ label juan_ending:
         juan "Sama aja lo kayak yang lain. Cuma manis di mulut pas butuh suara."
         "Juan membuang muka dan fokus lagi ke pekerjaannya."
         
-    $ npc_state["juan"]["relationship_quality"] += juan_meter
-    $ npc_state["juan"]["quest_status"] = "completed"
-    $ npc_state["juan"]["votes_banked"] = get_votes_from_relationship(npc_state["juan"]["relationship_quality"])
-    $ total_votes = calc_total_votes()
+    $ complete_quest("juan", juan_meter)
     "Quest Juan selesai. Kamu mendapatkan [npc_state['juan']['votes_banked']] vote."
     jump end_day_routine
 
@@ -183,10 +180,7 @@ label faizal_ending:
         faizal "Udahlah, lo mending cari suara ke anak ekskul lain aja. Gue sibuk."
         "Faizal mengabaikanmu sepenuhnya."
         
-    $ npc_state["faizal"]["relationship_quality"] += faizal_meter
-    $ npc_state["faizal"]["quest_status"] = "completed"
-    $ npc_state["faizal"]["votes_banked"] = get_votes_from_relationship(npc_state["faizal"]["relationship_quality"])
-    $ total_votes = calc_total_votes()
+    $ complete_quest("faizal", faizal_meter)
     "Quest Faizal selesai. Kamu mendapatkan [npc_state['faizal']['votes_banked']] vote."
     jump end_day_routine
 
@@ -278,10 +272,7 @@ label nayra_ending:
         nayra "Kayaknya lo sama aja kayak yang lain. Nggak ngerti betapa pentingnya ini buat kita."
         "Nayra membereskan gitarnya dan pergi."
         
-    $ npc_state["nayra"]["relationship_quality"] += nayra_meter
-    $ npc_state["nayra"]["quest_status"] = "completed"
-    $ npc_state["nayra"]["votes_banked"] = get_votes_from_relationship(npc_state["nayra"]["relationship_quality"])
-    $ total_votes = calc_total_votes()
+    $ complete_quest("nayra", nayra_meter)
     "Quest Nayra selesai. Kamu mendapatkan [npc_state['nayra']['votes_banked']] vote."
     jump end_day_routine
 
@@ -377,10 +368,7 @@ label aulia_ending:
         aulia "Mending lo pergi dari sini. Lupakan apa yang lo liat barusan."
         "Aulia membuang muka, terlihat kesal dan kecewa."
         
-    $ npc_state["aulia"]["relationship_quality"] += aulia_meter
-    $ npc_state["aulia"]["quest_status"] = "completed"
-    $ npc_state["aulia"]["votes_banked"] = get_votes_from_relationship(npc_state["aulia"]["relationship_quality"])
-    $ total_votes = calc_total_votes()
+    $ complete_quest("aulia", aulia_meter)
     "Quest Aulia selesai. Kamu mendapatkan [npc_state['aulia']['votes_banked']] vote."
     jump end_day_routine
 
@@ -470,10 +458,7 @@ label ellisa_ending:
         ellisa "Kakak nggak ngerti perasaan gue. Maaf, gue mau sendirian aja."
         "Ellisa kembali membenamkan wajahnya di lututnya."
         
-    $ npc_state["ellisa"]["relationship_quality"] += ellisa_meter
-    $ npc_state["ellisa"]["quest_status"] = "completed"
-    $ npc_state["ellisa"]["votes_banked"] = get_votes_from_relationship(npc_state["ellisa"]["relationship_quality"])
-    $ total_votes = calc_total_votes()
+    $ complete_quest("ellisa", ellisa_meter)
     "Quest Ellisa selesai. Kamu mendapatkan [npc_state['ellisa']['votes_banked']] vote."
     jump end_day_routine
 
@@ -564,10 +549,7 @@ label desti_ending:
         desti "Udahlah, Na. Lo kampanye sana aja. Gue masih banyak kerjaan ngurusin anak-anak sakit."
         "Desti membalikkan badan dan kembali sibuk mengecek kotak P3K."
         
-    $ npc_state["desti"]["relationship_quality"] += desti_meter
-    $ npc_state["desti"]["quest_status"] = "completed"
-    $ npc_state["desti"]["votes_banked"] = get_votes_from_relationship(npc_state["desti"]["relationship_quality"])
-    $ total_votes = calc_total_votes()
+    $ complete_quest("desti", desti_meter)
     "Quest Desti selesai. Kamu mendapatkan [npc_state['desti']['votes_banked']] vote."
     jump end_day_routine
 

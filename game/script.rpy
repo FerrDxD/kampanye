@@ -14,27 +14,7 @@ default threshold_flourine = 32
 default robotika_daily_bonus_active = False
 default robotika_unique_quest_status = "locked"
 
-default npc_state = {
-    "adam": {"quest_status": "not_started", "relationship_quality": 0, "votes_banked": 0, "approached_day": None},
-    "adi": {"quest_status": "not_started", "relationship_quality": 0, "votes_banked": 0, "approached_day": None},
-    "anggun": {"quest_status": "not_started", "relationship_quality": 0, "votes_banked": 0, "approached_day": None},
-    "lulu": {"quest_status": "not_started", "relationship_quality": 0, "votes_banked": 0, "approached_day": None},
-    "inez": {"quest_status": "not_started", "relationship_quality": 0, "votes_banked": 0, "approached_day": None},
-    "angga": {"quest_status": "not_started", "relationship_quality": 0, "votes_banked": 0, "approached_day": None},
-    "ferdi": {"quest_status": "not_started", "relationship_quality": 0, "votes_banked": 0, "approached_day": None},
-    "juan": {"quest_status": "not_started", "relationship_quality": 0, "votes_banked": 0, "approached_day": None},
-    "faizal": {"quest_status": "not_started", "relationship_quality": 0, "votes_banked": 0, "approached_day": None},
-    "nayra": {"quest_status": "not_started", "relationship_quality": 0, "votes_banked": 0, "approached_day": None},
-    "aulia": {"quest_status": "not_started", "relationship_quality": 0, "votes_banked": 0, "approached_day": None},
-    "ellisa": {"quest_status": "not_started", "relationship_quality": 0, "votes_banked": 0, "approached_day": None},
-    "desti": {"quest_status": "not_started", "relationship_quality": 0, "votes_banked": 0, "approached_day": None},
-    "lukman": {"quest_status": "not_started", "relationship_quality": 0, "votes_banked": 0, "approached_day": None},
-    "bagus": {"quest_status": "not_started", "relationship_quality": 0, "votes_banked": 0, "approached_day": None},
-    "yura": {"quest_status": "not_started", "relationship_quality": 0, "votes_banked": 0, "approached_day": None},
-    "ayya": {"quest_status": "not_started", "relationship_quality": 0, "votes_banked": 0, "approached_day": None},
-    "ami": {"quest_status": "not_started", "relationship_quality": 0, "votes_banked": 0, "approached_day": None},
-    "cecillia": {"quest_status": "not_started", "relationship_quality": 0, "votes_banked": 0, "approached_day": None}
-}
+default npc_state = {name: {"quest_status": "not_started", "relationship_quality": 0, "votes_banked": 0, "approached_day": None} for name in ["adam", "adi", "anggun", "lulu", "inez", "angga", "ferdi", "juan", "faizal", "nayra", "aulia", "ellisa", "desti", "lukman", "bagus", "yura", "ayya", "ami", "cecillia"]}
 
 default fanya_stage = 0
 default flourine_stage = 0
@@ -51,10 +31,13 @@ init python:
             return 0
             
     def calc_total_votes():
-        base = 0
-        for key in npc_state:
-            base += npc_state[key]["votes_banked"]
-        return base + passive_votes
+        return sum(npc["votes_banked"] for npc in npc_state.values()) + passive_votes
+
+    def complete_quest(npc, meter):
+        npc_state[npc]["relationship_quality"] += meter
+        npc_state[npc]["quest_status"] = "completed"
+        npc_state[npc]["votes_banked"] = get_votes_from_relationship(npc_state[npc]["relationship_quality"])
+        store.total_votes = calc_total_votes()
 
 label start:
     jump prolog
@@ -103,30 +86,15 @@ label main_loop:
         call screen school_map
         $ current_location = _return
         
-        if current_location == "gerbang":
-            jump loc_gerbang
-        elif current_location == "lapangan":
-            jump loc_lapangan
-        elif current_location == "ekskul":
-            jump loc_ekskul
-        elif current_location == "lab":
-            jump loc_lab
-        elif current_location == "perpus":
-            jump loc_perpus
-        elif current_location == "osis":
-            jump loc_osis
-        elif current_location == "uks":
-            jump loc_uks
-        elif current_location == "aula":
-            jump loc_aula
-        elif current_location == "pramuka":
-            jump loc_pramuka
-        elif current_location == "heist":
+        if current_location == "heist":
             jump robotika_heist
         elif current_location == "pulang":
             "Aruna memutuskan untuk mengakhiri harinya dan pulang ke rumah."
             jump end_day_routine
-        elif current_location == "mundur":
+        elif current_location != "mundur":
+            $ renpy.jump(current_location)
+            
+        if current_location == "mundur":
             "Aruna memandangi formulir pencalonannya. Apakah ini saatnya untuk berhenti?"
             menu:
                 "Ya, aku mengundurkan diri.":
@@ -310,10 +278,7 @@ label adam_ending:
     jump quest_adam_wrap_up
 
 label quest_adam_wrap_up:
-    $ npc_state["adam"]["relationship_quality"] += adam_meter
-    $ npc_state["adam"]["quest_status"] = "completed"
-    $ npc_state["adam"]["votes_banked"] = get_votes_from_relationship(npc_state["adam"]["relationship_quality"])
-    $ total_votes = calc_total_votes()
+    $ complete_quest("adam", adam_meter)
     
     "Quest Adam selesai! Akumulasi Support: [adam_meter]."
     "Kamu mendapatkan [npc_state['adam']['votes_banked']] vote dari ekskul Jurnalistik."
