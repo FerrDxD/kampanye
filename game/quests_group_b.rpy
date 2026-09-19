@@ -1,8 +1,7 @@
 # Quests Group B - Juan, Faizal, Nayra, Aulia, Ellisa, Desti
 
 label quest_juan:
-    $ npc_state["juan"]["quest_status"] = "in_progress"
-    $ npc_state["juan"]["approached_day"] = current_day
+    $ start_quest("juan")
     $ juan_meter = 0
     
     scene expression Transform("images/bg_lab_robotika.jpg", size=(1920, 1080))
@@ -92,8 +91,7 @@ label juan_ending:
 
 
 label quest_faizal:
-    $ npc_state["faizal"]["quest_status"] = "in_progress"
-    $ npc_state["faizal"]["approached_day"] = current_day
+    $ start_quest("faizal")
     $ faizal_meter = 0
     
     scene expression Transform("images/bg_lab_robotika.jpg", size=(1920, 1080))
@@ -186,8 +184,7 @@ label faizal_ending:
 
 
 label quest_nayra:
-    $ npc_state["nayra"]["quest_status"] = "in_progress"
-    $ npc_state["nayra"]["approached_day"] = current_day
+    $ start_quest("nayra")
     $ nayra_meter = 0
     
     scene expression Transform("images/bg_ekskul_musik.jpg", size=(1920, 1080))
@@ -278,8 +275,7 @@ label nayra_ending:
 
 
 label quest_aulia:
-    $ npc_state["aulia"]["quest_status"] = "in_progress"
-    $ npc_state["aulia"]["approached_day"] = current_day
+    $ start_quest("aulia")
     $ aulia_meter = 0
     
     scene expression Transform("images/bg_lapangan_paskibra.jpg", size=(1920, 1080))
@@ -374,8 +370,7 @@ label aulia_ending:
 
 
 label quest_ellisa:
-    $ npc_state["ellisa"]["quest_status"] = "in_progress"
-    $ npc_state["ellisa"]["approached_day"] = current_day
+    $ start_quest("ellisa")
     $ ellisa_meter = 0
     
     scene expression Transform("images/bg_perpus_sudut.jpg", size=(1920, 1080))
@@ -464,8 +459,7 @@ label ellisa_ending:
 
 
 label quest_desti:
-    $ npc_state["desti"]["quest_status"] = "in_progress"
-    $ npc_state["desti"]["approached_day"] = current_day
+    $ start_quest("desti")
     $ desti_meter = 0
     
     scene expression Transform("images/bg_uks_kasur.jpg", size=(1920, 1080))

@@ -1,16 +1,9 @@
-define adi = Character('Adi', color="#1abc9c")
-define ang = Character('Anggun', color="#e67e22")
-define lul = Character('Lulu', color="#c0392b")
-define inz = Character('Inez', color="#8e44ad")
-define aga = Character('Angga', color="#d35400")
-define fer = Character('Ferdi', color="#2980b9")
 
 # ============================================================
 # QUEST ADI
 # ============================================================
 label quest_adi:
-    $ npc_state["adi"]["quest_status"] = "in_progress"
-    $ npc_state["adi"]["approached_day"] = current_day
+    $ start_quest("adi")
     $ adi_meter = 0
     
     scene expression Transform("images/bg_ekskul_koridor.jpg", size=(1920, 1080))
@@ -106,8 +99,7 @@ label adi_ending:
 # QUEST ANGGUN
 # ============================================================
 label quest_anggun:
-    $ npc_state["anggun"]["quest_status"] = "in_progress"
-    $ npc_state["anggun"]["approached_day"] = current_day
+    $ start_quest("anggun")
     $ anggun_meter = 0
     
     scene expression Transform("images/bg_lapangan_ganti.jpg", size=(1920, 1080))
@@ -170,8 +162,7 @@ label anggun_ending:
 # QUEST LULU
 # ============================================================
 label quest_lulu:
-    $ npc_state["lulu"]["quest_status"] = "in_progress"
-    $ npc_state["lulu"]["approached_day"] = current_day
+    $ start_quest("lulu")
     $ lulu_meter = 0
     
     scene expression Transform("images/bg_lapangan_basket.jpg", size=(1920, 1080))
@@ -246,8 +237,7 @@ label lulu_ending:
 # QUEST INEZ
 # ============================================================
 label quest_inez:
-    $ npc_state["inez"]["quest_status"] = "in_progress"
-    $ npc_state["inez"]["approached_day"] = current_day
+    $ start_quest("inez")
     $ inez_meter = 0
     
     scene expression Transform("images/bg_ekskul_seni.jpg", size=(1920, 1080))
@@ -326,8 +316,7 @@ label inez_ending:
 # QUEST ANGGA
 # ============================================================
 label quest_angga:
-    $ npc_state["angga"]["quest_status"] = "in_progress"
-    $ npc_state["angga"]["approached_day"] = current_day
+    $ start_quest("angga")
     $ angga_meter = 0
     
     scene expression Transform("images/bg_pramuka.jpg", size=(1920, 1080))
@@ -387,8 +376,7 @@ label angga_ending:
 # QUEST FERDI (ROBOTIKA)
 # ============================================================
 label quest_ferdi:
-    $ npc_state["ferdi"]["quest_status"] = "in_progress"
-    $ npc_state["ferdi"]["approached_day"] = current_day
+    $ start_quest("ferdi")
     $ ferdi_meter = 0
     
     scene expression Transform("images/bg_lab_robotika.jpg", size=(1920, 1080))

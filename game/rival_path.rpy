@@ -10,6 +10,8 @@ default flourine_comeback_active = False
 default flourine_resolved = None
 
 label rival_fanya_loop:
+    if player_path is None:
+        $ player_path = "rival"
     if fanya_resolved:
         "Urusanmu dengan Fanya sudah selesai. Kini tinggal menunggu hasil akhirnya."
         jump end_day_routine
@@ -311,6 +313,8 @@ label rival_fanya_loop:
 
 
 label rival_flourine_loop:
+    if player_path is None:
+        $ player_path = "rival"
     if flourine_resolved:
         "Urusanmu dengan Flourine sudah selesai. Kini tinggal menunggu hasil akhirnya."
         jump end_day_routine

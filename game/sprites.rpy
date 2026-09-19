@@ -98,50 +98,16 @@ init -1 python:
     }
 
     def get_transform(side, state):
-        """Returns appropriate transform based on position side and state."""
-        if side == "left":
-            if state == "appear":
-                return sprite_left_appear
-            elif state == "highlight":
-                return sprite_left_highlight
-            else:  # dim
-                return sprite_left_dim
-        elif side == "right":
-            if state == "appear":
-                return sprite_right_appear
-            elif state == "highlight":
-                return sprite_right_highlight
-            else:  # dim
-                return sprite_right_dim
-        else:  # center
-            if state == "appear":
-                return sprite_center_appear
-            elif state == "highlight":
-                return sprite_center_highlight
-            else:  # dim
-                return sprite_center_dim
+        return getattr(store, f"sprite_{side}_{state}")
 
     def update_character_sprites(speaker_tag):
-        """Manages fade-in appearance, highlighting for speaker, and dimming for listeners."""
-        if speaker_tag not in SPRITE_POSITIONS:
-            return
-
+        if speaker_tag not in SPRITE_POSITIONS: return
         for tag, side in SPRITE_POSITIONS.items():
             if not renpy.showing(tag):
-                # Character not yet on screen -> only the speaker enters with fade-in
                 if tag == speaker_tag:
-                    trans = get_transform(side, "appear")
-                    renpy.show(tag, at_list=[trans])
+                    renpy.show(tag, at_list=[get_transform(side, "appear")])
             else:
-                # Character is already on screen; update transparency smoothly
-                if tag == speaker_tag:
-                    # Speaking -> fully visible
-                    trans = get_transform(side, "highlight")
-                    renpy.show(tag, at_list=[trans])
-                else:
-                    # Listening -> dimmed but still visible
-                    trans = get_transform(side, "dim")
-                    renpy.show(tag, at_list=[trans])
+                renpy.show(tag, at_list=[get_transform(side, "highlight" if tag == speaker_tag else "dim")])
 
     def make_sprite_cb(speaker_tag):
         def cb(event, interact=True, **kwargs):

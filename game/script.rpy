@@ -33,6 +33,12 @@ init python:
     def calc_total_votes():
         return sum(npc["votes_banked"] for npc in npc_state.values()) + passive_votes
 
+    def start_quest(npc):
+        if store.player_path is None:
+            store.player_path = "support"
+        npc_state[npc]["quest_status"] = "in_progress"
+        npc_state[npc]["approached_day"] = store.current_day
+
     def complete_quest(npc, meter):
         npc_state[npc]["relationship_quality"] += meter
         npc_state[npc]["quest_status"] = "completed"
@@ -107,8 +113,7 @@ label main_loop:
                     jump map_navigation
 
 label quest_adam:
-    $ npc_state["adam"]["quest_status"] = "in_progress"
-    $ npc_state["adam"]["approached_day"] = current_day
+    $ start_quest("adam")
     $ adam_meter = 0
     
     scene expression Transform("images/bg_ekskul_jurnalistik.jpg", size=(1920, 1080))

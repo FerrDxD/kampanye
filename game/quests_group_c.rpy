@@ -1,18 +1,10 @@
 # Characters Group C
-define lk = Character('Lukman', color="#a29bfe")
-define bg = Character('Bagus', color="#00cec9")
-define yr = Character('Yura', color="#ffeaa7")
-define ay = Character('Ayya', color="#fab1a0")
-define am = Character('Ami', color="#ff7675")
-define cc = Character('Cecillia', color="#fd79a8")
-define ar = Character('Aruna', color="#3498db") # In case not carried over
 
 # -------------------------------------------------------------
 # QUEST LUKMAN (Zoologi)
 # -------------------------------------------------------------
 label quest_lukman:
-    $ npc_state["lukman"]["quest_status"] = "in_progress"
-    $ npc_state["lukman"]["approached_day"] = current_day
+    $ start_quest("lukman")
     $ lukman_meter = 0
     
     scene expression Transform("images/bg_lab_biologi.jpg", size=(1920, 1080))
@@ -147,8 +139,7 @@ label lukman_end:
 # QUEST BAGUS (Pustakawan)
 # -------------------------------------------------------------
 label quest_bagus:
-    $ npc_state["bagus"]["quest_status"] = "in_progress"
-    $ npc_state["bagus"]["approached_day"] = current_day
+    $ start_quest("bagus")
     $ bagus_meter = 0
     
     scene expression Transform("images/bg_perpus_meja.jpg", size=(1920, 1080))
@@ -283,8 +274,7 @@ label bagus_end:
 # QUEST YURA (Jurnalistik)
 # -------------------------------------------------------------
 label quest_yura:
-    $ npc_state["yura"]["quest_status"] = "in_progress"
-    $ npc_state["yura"]["approached_day"] = current_day
+    $ start_quest("yura")
     $ yura_meter = 0
     
     scene expression Transform("images/bg_ekskul_jurnalistik.jpg", size=(1920, 1080))
@@ -413,8 +403,7 @@ label yura_end:
 # QUEST AYYA (FPSH)
 # -------------------------------------------------------------
 label quest_ayya:
-    $ npc_state["ayya"]["quest_status"] = "in_progress"
-    $ npc_state["ayya"]["approached_day"] = current_day
+    $ start_quest("ayya")
     $ ayya_meter = 0
     
     scene expression Transform("images/bg_aula.jpg", size=(1920, 1080))
@@ -543,8 +532,7 @@ label ayya_end:
 # QUEST AMI (Jurnalistik)
 # -------------------------------------------------------------
 label quest_ami:
-    $ npc_state["ami"]["quest_status"] = "in_progress"
-    $ npc_state["ami"]["approached_day"] = current_day
+    $ start_quest("ami")
     $ ami_meter = 0
     
     scene expression Transform("images/bg_ekskul_jurnalistik.jpg", size=(1920, 1080))
@@ -675,8 +663,7 @@ label ami_end:
 # QUEST CECILLIA (Badminton)
 # -------------------------------------------------------------
 label quest_cecillia:
-    $ npc_state["cecillia"]["quest_status"] = "in_progress"
-    $ npc_state["cecillia"]["approached_day"] = current_day
+    $ start_quest("cecillia")
     $ cecillia_meter = 0
     
     scene expression Transform("images/bg_lapangan_badminton.jpg", size=(1920, 1080))
